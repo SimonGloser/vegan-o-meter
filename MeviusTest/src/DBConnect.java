@@ -9,7 +9,7 @@ public class DBConnect {
 	public DBConnect() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mensch", "root", "password"); // test und "" müssen geändert werden
+			 con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vegandata", "root", ""); // test und "" müssen geändert werden
 		     st = con.createStatement();
 		 } catch (Exception ex) {
 		     System.out.println("Error: " + ex);
@@ -21,13 +21,15 @@ public class DBConnect {
 	
 	 public void getData() {
 		 try {
-		     String query = "select * from new_table";
+		     String query = "select * from person";
 		     rs = st.executeQuery(query);
 		     System.out.println("Records from Database");
 		     while (rs.next()) {
 		  String name = rs.getString("name");
-		  String age = rs.getString("age");
-		  System.out.println("Name: " + name + " Age: " + age);
+		  int id = rs.getInt("id");
+		  String surname = rs.getString("surname");
+		  String iban= rs.getString("iban");
+		  System.out.println("Name: " + name + " ID: " + id + "Surname" + surname + "IBAN"+ iban);
 		     }
 		 } catch(Exception ex) {
 		     System.out.println(ex);
