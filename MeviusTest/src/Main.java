@@ -9,7 +9,7 @@ public class Main {
 		connect.getData();
 		
 		System.out.println("Hat wohl funktioniert");
-		// test
+		// Ich bin auf dem richtigen branch
 	}
 
 }
