@@ -1,3 +1,4 @@
+package controler;
 import java.sql.*;
 
 public class DBConnect {
@@ -35,6 +36,28 @@ public class DBConnect {
 		     System.out.println(ex);
 		 }
 		    }
+	 
+	 public int getWeight(int id) {
+		 int gewicht = 0;
+		 try {
+			 String query = "select weight from coBilanz where id = " +id;
+		     rs = st.executeQuery(query);
+			 while(rs.next()) {
+				  gewicht = rs.getInt("weight");
+				 //System.out.println("Weight = " + gewicht);
+				
+			 }
+			 
+			
+		} catch (Exception ex) {
+			
+			System.out.println(ex);
+			return 0;
+		}
+		 
+		return gewicht;
+		
+	 }
 		
 
 }
