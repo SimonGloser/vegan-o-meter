@@ -1,10 +1,7 @@
 package model;
 
-public class Calculator {
+public interface Calculator {
 	
-	public Calculator() {
-		// TODO Auto-generated constructor stub
-	}
 	
 	public static int getGrundumsatz(boolean gender,float mass, int height, int age ) {
 		// gender = 1 = true bedeutet Mann
@@ -31,6 +28,10 @@ public class Calculator {
 	public static int getLiquidNeeds(float mass) {
 		//die Methode gibt den Flüssigkeitsbedarf in ml (Milliliter ) zurück
 		return (int)(1500+15*(mass-20));
+	}
+	public static int getTrainingsPuls(int age) {
+		// wird durch die Karvonen-Formel aus der Wikipedia berechnet
+		return (int)(((220-age)-70)*0.5+70);
 	}
 
 }
