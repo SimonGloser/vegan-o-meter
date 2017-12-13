@@ -15,6 +15,8 @@ public class Main implements Calculator {
 		//connect.getData();
 		System.out.println("Puls ="+ Calculator.getTrainingsPuls(32));
 		
+		System.out.println("Co Verbrauch = " + Calculator.getCoWert(2400, 1.0f, 1.0f, 1.0f, 1.0f));
+		
 		//System.out.println("Hat wohl funktioniert");
 		// Ich bin auf dem richtigen branch
 	}

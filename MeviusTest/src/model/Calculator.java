@@ -2,6 +2,14 @@ package model;
 
 public interface Calculator {
 	
+	public static float getCoWert( int grundumsatz,float factorSport, 
+			float factorEssen, float facktorTiefkuel, float factorEinkauf) {
+		
+		
+		
+		return (float) ((1.13)*(grundumsatz/2400.0)*factorSport*factorEssen*facktorTiefkuel*factorEinkauf);
+	}
+	
 	
 	public static int getGrundumsatz(boolean gender,float mass, int height, int age ) {
 		// gender = 1 = true bedeutet Mann
