@@ -2,10 +2,15 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -22,6 +27,7 @@ public class Anmeldung extends JFrame {
 	JPanel panel;
 	JLabel emailLabel;
 	JLabel passwordLabel;
+	JPanel emailPanel;
 	
 	JTextField emailField;
 	JPasswordField password;
@@ -37,27 +43,42 @@ public class Anmeldung extends JFrame {
 	
 	emailLabel = new JLabel("Email: ");
 	emailField = new JTextField(20);
+	emailField.setPreferredSize(new Dimension(10, 1));
 	passwordLabel = new JLabel("Password: ");
 	password = new JPasswordField(10);
 	
 	// Step 3: generate containers for the components
 	 panel = new JPanel();
+	 emailPanel = new JPanel();
      Container content = getContentPane();
      
   // Step 4: determine a layout manager
-     panel.setLayout( new GridLayout(4, 3));
-     content.setLayout( new FlowLayout());
+     panel.setLayout( new GridBagLayout());
+     GridBagConstraints gbc = new GridBagConstraints();
+     gbc.fill = GridBagConstraints.HORIZONTAL;
+     gbc.insets = new Insets(5, 50, 5, 50);
+      
+     content.setLayout(new GridBagLayout());
      
   // Step 5: add the components to the containers and put the containers
      // into the main window
-     panel.add(emailLabel);
-     panel.add(emailField);
-     panel.add(passwordLabel);
-     panel.add(password);
-     panel.add(newAccount);
-     panel.add(submit);
+     gbc.gridx = 0;
+     gbc.gridy = 0;
+     panel.add(emailField, gbc);
+     gbc.gridx = 0;
+     gbc.gridy = 1;
+     panel.add(passwordLabel, gbc);
+     gbc.gridx = 0;
+     gbc.gridy = 2;
+     panel.add(password, gbc);
+     gbc.gridx = 0;
+     gbc.gridy = 3;
+     panel.add(newAccount, gbc);
+     gbc.gridx = 0;
+     gbc.gridy = 4;
+     panel.add(submit, gbc);
      
-     content.add(panel);
+     content.add(panel, gbc);
      
   // Step 6: Event Handling
      addWindowListener(new WindowClosingAdapter());
