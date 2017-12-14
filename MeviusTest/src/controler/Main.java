@@ -1,25 +1,19 @@
 package controler;
 import model.*;
+import gui.*;
 
 
 
 public class Main implements Calculator {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		// DBConnect verbindet sich mit der Datenbank und hat die Anfragebefehle
 		//DBConnect connect = new DBConnect(); 
 		
-		//System.out.println("Gewicht = " +connect.getWeight(1));
-		//boolean gender,float mass, float height, int age 
-		//connect.getData();
-		System.out.println("Puls ="+ Calculator.getTrainingsPuls(32));
+		// Öffnet die GUI
+		Anmeldung neuesFenster = new Anmeldung("Anmeldung");
 		
-		System.out.println("Co Verbrauch = " + Calculator.getCoWert(2400, 1.0f, 1.0f, 1.0f, 1.0f));
-		
-		//System.out.println("Hat wohl funktioniert");
-		// Ich bin auf dem richtigen branch
 	}
 
 }
-//gude
