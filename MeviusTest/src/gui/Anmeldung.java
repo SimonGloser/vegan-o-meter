@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class Anmeldung extends JFrame{
+public class Anmeldung extends JFrame {
 	
 	//Stepp 1 generate komponents
 	
@@ -60,6 +60,7 @@ public class Anmeldung extends JFrame{
      content.add(panel);
      
   // Step 6: Event Handling
+     addWindowListener(new WindowClosingAdapter());
      
   // Step 7: display main window
      
