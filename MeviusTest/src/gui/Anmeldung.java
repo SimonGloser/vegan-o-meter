@@ -27,7 +27,7 @@ public class Anmeldung extends JFrame {
 	JPanel panel;
 	JLabel emailLabel;
 	JLabel passwordLabel;
-	JPanel emailPanel;
+	
 	
 	JTextField emailField;
 	JPasswordField password;
@@ -41,15 +41,15 @@ public class Anmeldung extends JFrame {
 	newAccount = new JButton("New Account");
 	submit = new JButton("Submit");
 	
-	emailLabel = new JLabel("Email: ");
+	emailLabel = new JLabel("Email: ", JLabel.RIGHT);
+	
 	emailField = new JTextField(20);
-	emailField.setPreferredSize(new Dimension(10, 1));
-	passwordLabel = new JLabel("Password: ");
+	passwordLabel = new JLabel("Password: ", JLabel.RIGHT);
 	password = new JPasswordField(10);
 	
 	// Step 3: generate containers for the components
 	 panel = new JPanel();
-	 emailPanel = new JPanel();
+	
      Container content = getContentPane();
      
   // Step 4: determine a layout manager
@@ -64,18 +64,22 @@ public class Anmeldung extends JFrame {
      // into the main window
      gbc.gridx = 0;
      gbc.gridy = 0;
-     panel.add(emailField, gbc);
-     gbc.gridx = 0;
-     gbc.gridy = 1;
-     panel.add(passwordLabel, gbc);
-     gbc.gridx = 0;
-     gbc.gridy = 2;
-     panel.add(password, gbc);
-     gbc.gridx = 0;
-     gbc.gridy = 3;
      panel.add(newAccount, gbc);
      gbc.gridx = 0;
-     gbc.gridy = 4;
+     gbc.gridy = 1;
+     panel.add(emailLabel,gbc);
+     gbc.gridx = 1;
+     gbc.gridy = 1;
+     panel.add(emailField, gbc);
+     gbc.gridx = 0;
+     gbc.gridy = 2;
+     panel.add(passwordLabel, gbc);
+     gbc.gridx = 1;
+     gbc.gridy = 2;
+     panel.add(password, gbc);
+    
+     gbc.gridx = 1;
+     gbc.gridy = 3;
      panel.add(submit, gbc);
      
      content.add(panel, gbc);
