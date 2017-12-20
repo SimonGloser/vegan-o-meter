@@ -27,7 +27,12 @@ public class Anmeldung extends JFrame {
 	JPanel panel;
 	JLabel emailLabel;
 	JLabel passwordLabel;
+	JLabel registerJLabel;
+	JLabel loginJLabel;
 	
+	
+	//Panel für den Account Button
+	JPanel panelAccountButton;
 	
 	JTextField emailField;
 	JPasswordField password;
@@ -37,8 +42,13 @@ public class Anmeldung extends JFrame {
 	
 	
 	// Step 2: determine attributes of the components
+		
+	registerJLabel = new JLabel("Register here:");
+	registerJLabel.setHorizontalAlignment(0);
 	
-	newAccount = new JButton("New Account");
+	loginJLabel = new JLabel("Or log in here: ");
+	
+	newAccount = new JButton("create a new account");
 	submit = new JButton("Submit");
 	
 	emailLabel = new JLabel("Email: ", JLabel.RIGHT);
@@ -49,6 +59,7 @@ public class Anmeldung extends JFrame {
 	
 	// Step 3: generate containers for the components
 	 panel = new JPanel();
+	 panelAccountButton = new JPanel();
 	
      Container content = getContentPane();
      
@@ -56,15 +67,23 @@ public class Anmeldung extends JFrame {
      panel.setLayout( new GridBagLayout());
      GridBagConstraints gbc = new GridBagConstraints();
      gbc.fill = GridBagConstraints.HORIZONTAL;
-     gbc.insets = new Insets(5, 50, 5, 50);
+     gbc.insets = new Insets(5, 5, 5, 5);
       
      content.setLayout(new GridBagLayout());
      
+     panelAccountButton.setLayout(new BorderLayout());
+     
   // Step 5: add the components to the containers and put the containers
      // into the main window
-     gbc.gridx = 0;
+     //gbc.gridx = 0;
+     //gbc.gridy = 0;
+     panelAccountButton.add(registerJLabel, BorderLayout.NORTH);
+     panelAccountButton.add(newAccount, BorderLayout.CENTER);
+     
+     gbc.gridx = 1;
      gbc.gridy = 0;
-     panel.add(newAccount, gbc);
+     
+     panel.add(loginJLabel, gbc);
      gbc.gridx = 0;
      gbc.gridy = 1;
      panel.add(emailLabel,gbc);
@@ -82,6 +101,12 @@ public class Anmeldung extends JFrame {
      gbc.gridy = 3;
      panel.add(submit, gbc);
      
+     gbc.gridx = 1;
+     gbc.gridy = 0;
+     gbc.insets.set(10, 5, 50, 5);
+     content.add(panelAccountButton, gbc);
+     gbc.gridx = 1;
+     gbc.gridy = 3;
      content.add(panel, gbc);
      
   // Step 6: Event Handling
