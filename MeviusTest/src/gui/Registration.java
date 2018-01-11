@@ -48,12 +48,12 @@ public class Registration extends JFrame{
 		
 		// for the Labels
 		submit = new JButton("Submit");
-		labelName = new JLabel("Name:");
-		labelSurname = new JLabel("Surname:");
-		labelEmail = new JLabel("Email:");
-		labelIban = new JLabel("IBAN:");
-		labelPassword1 = new JLabel("Password:");
-		labelPasswordControl = new JLabel("Reenter yout Password:");
+		labelName = new JLabel("Name:",JLabel.RIGHT);
+		labelSurname = new JLabel("Surname:",JLabel.RIGHT);
+		labelEmail = new JLabel("Email:",JLabel.RIGHT);
+		labelIban = new JLabel("IBAN:",JLabel.RIGHT);
+		labelPassword1 = new JLabel("Password:",JLabel.RIGHT);
+		labelPasswordControl = new JLabel("Reenter yout Password:",JLabel.RIGHT);
 		
 		
 		// Step 3: generate containers for the components
