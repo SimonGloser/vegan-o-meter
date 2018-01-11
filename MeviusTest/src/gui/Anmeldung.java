@@ -8,6 +8,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
@@ -18,7 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class Anmeldung extends JFrame {
+public class Anmeldung extends JFrame implements ActionListener {
 	
 	//Stepp 1 generate komponents
 	
@@ -111,6 +112,7 @@ public class Anmeldung extends JFrame {
      
   // Step 6: Event Handling
      addWindowListener(new WindowClosingAdapter());
+     newAccount.addActionListener(this);
      
   // Step 7: display main window
      
@@ -119,6 +121,16 @@ public class Anmeldung extends JFrame {
      setLocationRelativeTo(null);
      setVisible(true);
 	
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		Object source=e.getSource();
+		
+		if(source == this.newAccount) {
+			Registration neuesFenster1 = new Registration("Registration");
+			dispose();
+		}
 	}
 
 }
