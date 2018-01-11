@@ -2,16 +2,24 @@ package gui;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class Registration extends JFrame{
+public class Registration extends JFrame implements ActionListener  {
 	
 	//Stepp 1 generate komponents
 	JTextField name;
@@ -143,6 +151,7 @@ public class Registration extends JFrame{
 	     
 	  // Step 6: Event Handling
 	     addWindowListener(new WindowClosingAdapter());
+	     submit.addActionListener(this);
 	     
 	  // Step 7: display main window
 	     
@@ -155,9 +164,19 @@ public class Registration extends JFrame{
 	     
 	     
 	     
-	     
-		 
+	  }
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
 		
+		Object source=e.getSource();
+		
+	
+		
+		if(source == this.submit) {
+			Veganometer neuesFenster1 = new Veganometer("Veganometer");
+			dispose();
+		}
 	}
 
 }

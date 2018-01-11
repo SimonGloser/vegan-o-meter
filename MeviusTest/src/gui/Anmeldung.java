@@ -113,7 +113,7 @@ public class Anmeldung extends JFrame implements ActionListener {
   // Step 6: Event Handling
      addWindowListener(new WindowClosingAdapter());
      newAccount.addActionListener(this);
-     
+     submit.addActionListener(this);
   // Step 7: display main window
      
      pack();
@@ -129,6 +129,10 @@ public class Anmeldung extends JFrame implements ActionListener {
 		
 		if(source == this.newAccount) {
 			Registration neuesFenster1 = new Registration("Registration");
+			dispose();
+		}
+		if(source == this.submit) {
+			Veganometer neuesFenster1 = new Veganometer("Veganometer");
 			dispose();
 		}
 	}
