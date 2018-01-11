@@ -21,7 +21,7 @@ import javax.swing.JTextField;
 
 public class Registration extends JFrame implements ActionListener  {
 	
-	//Stepp 1 generate komponents
+	//Step 1 generate komponents
 	JTextField name;
 	JTextField surname;
 	JTextField email;
