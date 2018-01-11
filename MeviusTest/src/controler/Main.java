@@ -13,7 +13,7 @@ public class Main implements Calculator {
 		
 		// Öffnet die GUI
 		Anmeldung neuesFenster = new Anmeldung("Anmeldung");
-		
+		Registration neuesFenster1 = new Registration("Registration");
 	}
 
 }
