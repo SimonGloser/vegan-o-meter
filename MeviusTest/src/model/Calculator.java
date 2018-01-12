@@ -37,6 +37,13 @@ public interface Calculator {
 		//die Methode gibt den Flüssigkeitsbedarf in ml (Milliliter ) zurück
 		return (int)(1500+15*(mass-20));
 	}
+	/**
+	 * @autor Simon Gloser
+	 * @date 05.11.2017
+	 * @brief This methode calculates the users training pulse.
+	 * @param age Need the age form the user.
+	 * @return Returns the pulse of the user.
+	 */
 	public static int getTrainingsPuls(int age) {
 		// wird durch die Karvonen-Formel aus der Wikipedia berechnet
 		return (int)(((220-age)-70)*0.5+70);
