@@ -1,5 +1,5 @@
 package gui;
-
+import controler.*;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -15,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -46,12 +47,12 @@ public class Registration extends JFrame implements ActionListener  {
 		// Step 2: determine attributes of the components
 		
 		// for the JTextFields
-		name = new JTextField(22);
-		surname = new JTextField(22);
-		email = new JTextField(22);
-		iban = new JTextField(22);
-		password1 = new JTextField(22);
-		passwordControl = new JTextField(22);
+		name = new JTextField("Please enter yout name",22);
+		surname = new JTextField("Please enter your surname",22);
+		email = new JTextField("Please enter your email",22);
+		iban = new JTextField("Please enter your IBAN",22);
+		password1 = new JTextField("Please enter a password",22);
+		passwordControl = new JTextField("Please reenter your password",22);
 		
 		
 		// for the Labels
@@ -171,11 +172,25 @@ public class Registration extends JFrame implements ActionListener  {
 		
 		Object source=e.getSource();
 		
-	
+		
 		
 		if(source == this.submit) {
+			if((password1.getText().equals("Please enter a password"))||
+					(passwordControl.getText().equals("Please reenter your password"))) {
+				JOptionPane.showMessageDialog(null, "Please enter or reenter a password",
+                        "Dear User", JOptionPane.PLAIN_MESSAGE);
+			}
+			
+			if(password1.getText().equals(passwordControl.getText())	) {
+			controler.Main.controlerNewCustomer(name.getText(),
+					surname.getText(), email.getText(), iban.getText(), password1.getText());
 			Veganometer neuesFenster1 = new Veganometer("Veganometer");
 			dispose();
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Password does not confirm",
+                        "Dear User", JOptionPane.PLAIN_MESSAGE);
+			}
 		}
 	}
 

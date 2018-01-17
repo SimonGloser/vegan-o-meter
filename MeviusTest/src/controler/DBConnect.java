@@ -19,6 +19,23 @@ public class DBConnect {
 		
 		}
 	
+	//insert into person (name, surname, email, iban, password)
+	//values ("Beirekik", "Armin", "ssdds", "DE23224","sdsdsds");
+	
+	public void newCustomer(String name, String surname, String email, String iban, String password) {
+		try {
+			String query = "insert into person (name, surname, email, iban, password)values(\""+name+"\",\""+ surname+
+					"\",\""+ email+"\",\"" + iban +"\",\"" + password + "\");";
+			
+		
+			
+			 st.executeUpdate(query);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+	
 	
 	 public void getData() {
 		 try {
