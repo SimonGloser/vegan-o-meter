@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import model.Calculator;
+
 /**
  * 
  * 
@@ -33,7 +35,12 @@ public class TrainingPulse extends JFrame implements ActionListener {
     JButton back;
     JPanel panelAccountButton;
     JPanel panel;
-		
+    JTextField ageField;
+	JTextField pulseField;
+	JButton submit;	
+	JLabel ageLabel;
+    JLabel pulseLabel;
+    
 	
 	
 	public TrainingPulse(String s) {
@@ -41,7 +48,18 @@ public class TrainingPulse extends JFrame implements ActionListener {
 		
 		// for the Labels
 		back = new JButton("back");
+		pulseLabel = new JLabel("Your trainings pulse: ", JLabel.RIGHT);
+		ageLabel = new JLabel("Your age: ", JLabel.RIGHT);
+		ageField = new JTextField(10);
+		pulseField = new JTextField(10);
 		
+		
+		submit = new JButton("submit");
+		 submit.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                calculate();
+	            }
+	        });
 		// Step 3: generate containers for the components
 		panel = new JPanel();
 		panelAccountButton = new JPanel();
@@ -64,7 +82,37 @@ public class TrainingPulse extends JFrame implements ActionListener {
 	    gbc.gridx = 0;
 	    gbc.gridy = 0;
 	     
-	    panel.add(back, gbc);	
+	    panel.add(ageLabel,gbc);
+	    gbc.gridx = 1;
+	    gbc.gridy = 0;
+	    
+	    panel.add(ageField,gbc);
+	    
+	    
+	    gbc.gridx = 0;
+	    gbc.gridy = 1;
+	    
+	    panel.add(back,gbc);
+	    
+	    
+	    
+	    gbc.gridx = 1;
+	    gbc.gridy = 1;
+	    
+	    panel.add(submit,gbc);
+	    
+	    
+	    gbc.gridx = 0;
+	    gbc.gridy = 2;
+	  
+	    panel.add(pulseLabel,gbc);
+	    
+	    gbc.gridx = 1;
+	    gbc.gridy = 2;
+	    
+	    panel.add(pulseField,gbc);
+	     
+	    
 	     
 	    gbc.insets.set(10, 5, 50, 5);
 		    
@@ -95,6 +143,19 @@ public class TrainingPulse extends JFrame implements ActionListener {
 		}
 	
      }
-	
+  private void calculate() {
+        
+        int age; 
+        int pulseValue;
+        
+        age = Integer.parseInt(ageField.getText());
+        pulseValue = Calculator.getTrainingsPuls(age);
+        
+
+        //Ausgabe
+        
+       pulseField.setText(Float.toString(pulseValue).replace('.', ','));
+        
+    }
 	
 }

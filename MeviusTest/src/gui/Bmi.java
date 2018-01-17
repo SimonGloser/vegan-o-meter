@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import model.Calculator;
+
 /**
  * 
  * 
@@ -28,6 +30,9 @@ import javax.swing.JTextField;
  */
 public class Bmi extends JFrame implements ActionListener {
 	
+	 
+ 
+	
 	//Stepp 1 generate komponents
 	
     JButton back;
@@ -35,11 +40,12 @@ public class Bmi extends JFrame implements ActionListener {
     JPanel panel;
     JLabel weightLabel;
 	JLabel heightLabel;	
+	JLabel def;	
 	JTextField weightField;
 	JTextField heightField;
 	JButton submit;
-	
-
+	JLabel bmiLabel;
+	JTextField bmiField;
 
 	
 	
@@ -50,14 +56,20 @@ public class Bmi extends JFrame implements ActionListener {
 		
 		// for the Labels
 		back = new JButton("back");
-		
-		
+		def = new JLabel("");
+		bmiLabel = new JLabel("Your BMI: ", JLabel.RIGHT);
 		heightLabel = new JLabel("Your height in cm: ", JLabel.RIGHT);
 		weightLabel = new JLabel("Your weight in kg: ", JLabel.RIGHT);
 		submit = new JButton("submit");
+		 submit.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                calculate();
+	            }
+	        });
 		
 		weightField = new JTextField(10);
 		heightField = new JTextField(10);
+		bmiField = new JTextField(10);
 		// Step 3: generate containers for the components
 		panel = new JPanel();
 		panelAccountButton = new JPanel();
@@ -107,7 +119,23 @@ public class Bmi extends JFrame implements ActionListener {
 	    gbc.gridy = 2;
 	    
 	    panel.add(submit,gbc);
+	   
+	    gbc.gridx = 0;
+	    gbc.gridy = 3;
+	  
+	    panel.add(def,gbc);
 	    
+	    
+	    gbc.gridx = 0;
+	    gbc.gridy = 4;
+	  
+	    panel.add(bmiLabel,gbc);
+	    
+	    gbc.gridx = 1;
+	    gbc.gridy = 4;
+	    
+	    panel.add(bmiField,gbc);
+	   
 	    gbc.insets.set(10, 5, 50, 5);
 		    
 	    content.add(panel, gbc);
@@ -138,6 +166,34 @@ public class Bmi extends JFrame implements ActionListener {
 	
      }
 	
+    
+    private void calculate() {
+        
+        float weight;
+        int height;
+        
+        float bmiValue;
+        
+
+       
+      
+        height = Integer.parseInt(heightField.getText());
+        weight = Float.parseFloat(weightField.getText().replace(',', '.'));
+
+      
+        
+        bmiValue = Calculator.getBMI(weight,height);
+        
+
+        //Ausgabe
+        
+       bmiField.setText(Float.toString(bmiValue).replace('.', ','));
+        
+    }
+
 	
 }
+
+
+
 

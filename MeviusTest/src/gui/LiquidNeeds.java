@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import model.Calculator;
+
 /**
  * 
  * 
@@ -33,7 +35,11 @@ public class LiquidNeeds extends JFrame implements ActionListener {
     JButton back;
     JPanel panelAccountButton;
     JPanel panel;
-		
+    JLabel weightLabel;
+    JLabel liqLabel;
+    JButton submit;
+	JTextField weightField;
+	JTextField liqField;
 	
 	
 	public LiquidNeeds(String s) {
@@ -41,6 +47,18 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 		
 		// for the Labels
 		back = new JButton("back");
+		weightLabel = new JLabel("Your weight in kg: ", JLabel.RIGHT);
+		liqLabel = new JLabel("Your liquid needs in ml: ", JLabel.RIGHT);
+		weightField = new JTextField(10);
+		liqField = new JTextField(10);
+		
+		
+		submit = new JButton("submit");
+		 submit.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                calculate();
+	            }
+	        });
 		
 		// Step 3: generate containers for the components
 		panel = new JPanel();
@@ -64,7 +82,35 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 	    gbc.gridx = 0;
 	    gbc.gridy = 0;
 	     
-	    panel.add(back, gbc);	
+	    panel.add(weightLabel,gbc);
+	    gbc.gridx = 1;
+	    gbc.gridy = 0;
+	    
+	    panel.add(weightField,gbc);
+	    
+	    
+	    gbc.gridx = 0;
+	    gbc.gridy = 1;
+	    
+	    panel.add(back,gbc);
+	    
+	    
+	    
+	    gbc.gridx = 1;
+	    gbc.gridy = 1;
+	    
+	    panel.add(submit,gbc);
+	    
+	    
+	    gbc.gridx = 0;
+	    gbc.gridy = 2;
+	  
+	    panel.add(liqLabel,gbc);
+	    
+	    gbc.gridx = 1;
+	    gbc.gridy = 2;
+	    
+	    panel.add(liqField,gbc);
 	     
 	    gbc.insets.set(10, 5, 50, 5);
 		    
@@ -96,6 +142,24 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 	
      }
 	
+  private void calculate() {
+        
+        float weight; 
+        float liqValue;
+        
+        weight = Float.parseFloat(weightField.getText().replace(',', '.'));
+        liqValue = Calculator.getLiquidNeeds(weight);
+        
+
+        //Ausgabe
+        
+       liqField.setText(Float.toString(liqValue).replace('.', ','));
+        
+    }
+
 	
 }
+
+
+
 
