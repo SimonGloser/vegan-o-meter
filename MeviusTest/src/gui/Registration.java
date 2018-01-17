@@ -186,17 +186,22 @@ public class Registration extends JFrame implements ActionListener  {
 					(passwordControl.getText().equals("Please reenter your password"))) {
 				JOptionPane.showMessageDialog(null, "Please enter or reenter a password",
                         "Dear User", JOptionPane.PLAIN_MESSAGE);
+				
+			}else if(!(password1.getText().equals(passwordControl.getText())	)) {
+				JOptionPane.showMessageDialog(null, "Password does not confirm",
+                        "Dear User", JOptionPane.PLAIN_MESSAGE);
+				
 			}
 			
-			if(password1.getText().equals(passwordControl.getText())	) {
+			else if(password1.getText().equals(passwordControl.getText())	) {
 			controler.Main.controlerNewCustomer(name.getText(),
 					surname.getText(), email.getText(), iban.getText(), password1.getText());
 			Veganometer neuesFenster1 = new Veganometer("Veganometer");
 			dispose();
 			}
 			else {
-				JOptionPane.showMessageDialog(null, "Password does not confirm",
-                        "Dear User", JOptionPane.PLAIN_MESSAGE);
+				
+				
 			}
 		}
 	}
