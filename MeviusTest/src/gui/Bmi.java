@@ -33,15 +33,31 @@ public class Bmi extends JFrame implements ActionListener {
     JButton back;
     JPanel panelAccountButton;
     JPanel panel;
-		
+    JLabel weightLabel;
+	JLabel heightLabel;	
+	JTextField weightField;
+	JTextField heightField;
+	JButton submit;
+	
+
+
 	
 	
 	public Bmi(String s) {
 		super(s);
 		
+		
+		
 		// for the Labels
 		back = new JButton("back");
 		
+		
+		heightLabel = new JLabel("Your height in cm: ", JLabel.RIGHT);
+		weightLabel = new JLabel("Your weight in kg: ", JLabel.RIGHT);
+		submit = new JButton("submit");
+		
+		weightField = new JTextField(10);
+		heightField = new JTextField(10);
 		// Step 3: generate containers for the components
 		panel = new JPanel();
 		panelAccountButton = new JPanel();
@@ -63,9 +79,35 @@ public class Bmi extends JFrame implements ActionListener {
 	    // into the main window
 	    gbc.gridx = 0;
 	    gbc.gridy = 0;
+	    
+	    panel.add(heightLabel, gbc);
 	     
-	    panel.add(back, gbc);	
+	    gbc.gridx = 1;
+	    gbc.gridy = 0;	
+	    
+	    panel.add(heightField,gbc);
+	    gbc.gridx = 0;
+	    gbc.gridy = 1;
 	     
+	    panel.add(weightLabel,gbc);
+	    gbc.gridx = 1;
+	    gbc.gridy = 1;
+	    
+	    panel.add(weightField,gbc);
+	    
+	    
+	    gbc.gridx = 0;
+	    gbc.gridy = 2;
+	    
+	    panel.add(back,gbc);
+	    
+	    
+	    
+	    gbc.gridx = 1;
+	    gbc.gridy = 2;
+	    
+	    panel.add(submit,gbc);
+	    
 	    gbc.insets.set(10, 5, 50, 5);
 		    
 	    content.add(panel, gbc);
