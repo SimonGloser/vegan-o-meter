@@ -1,5 +1,11 @@
 package model;
-
+/**
+ * 
+ * @author Simon Gloser
+ * @date 12.12.2017
+ * @brief This class contains all calculation methods.
+ *
+ */
 public interface Calculator {
 	
 	public static float getCoWert( int grundumsatz,float factorSport, 
@@ -10,7 +16,15 @@ public interface Calculator {
 		return (float) ((1.13)*(grundumsatz/2400.0)*factorSport*factorEssen*facktorTiefkuel*factorEinkauf);
 	}
 	
-	
+	/**
+	 * @brief This method calculates the basal metabolic rate.
+	 *  There are two seperate formula for male and female.
+	 * @param gender 
+	 * @param mass
+	 * @param height
+	 * @param age
+	 * @return The formula calculates a float value, but we change the result to an int value.
+	 */
 	public static int getGrundumsatz(boolean gender,float mass, int height, int age ) {
 		// gender = 1 = true bedeutet Mann
 		// gender = 0 = false bedeutet Frau
@@ -26,13 +40,22 @@ public interface Calculator {
 		
 		
 	}
-
+	/**
+	 * @brief This method calculates the BMI.
+	 * @param mass
+	 * @param height
+	 * @return
+	 */
 	public static float getBMI(float mass, int height) {
 		
 		
 		return(float)(Math.round(10.0*(10000*mass/(height*height)))/10.0);
 	}
-
+	/**
+	 * @biref This method calculates the liquid needs of  the customer.
+	 * @param mass
+	 * @return
+	 */
 	public static int getLiquidNeeds(float mass) {
 		//die Methode gibt den Flüssigkeitsbedarf in ml (Milliliter ) zurück
 		return (int)(1500+15*(mass-20));
