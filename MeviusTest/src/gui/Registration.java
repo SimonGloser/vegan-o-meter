@@ -36,7 +36,7 @@ public class Registration extends JFrame implements ActionListener  {
 	JLabel labelIban;
 	JLabel labelPassword1;
 	JLabel labelPasswordControl;
-	
+	JButton back;
 	JButton submit;
 	JPanel panelAccountButton;
 	JPanel panel;
@@ -56,6 +56,7 @@ public class Registration extends JFrame implements ActionListener  {
 		
 		
 		// for the Labels
+		back = new JButton("back");
 		submit = new JButton("Submit");
 		labelName = new JLabel("Name:",JLabel.RIGHT);
 		labelSurname = new JLabel("Surname:",JLabel.RIGHT);
@@ -79,7 +80,7 @@ public class Registration extends JFrame implements ActionListener  {
 	     content.setLayout(new GridBagLayout());
 	     
 	     panelAccountButton.setLayout(new BorderLayout());
-	     
+	     back.addActionListener(this);
 	     
 	  // Step 5: add the components to the containers and put the containers
 	     // into the main window
@@ -138,8 +139,9 @@ public class Registration extends JFrame implements ActionListener  {
 	     
 	     
 	     panel.add(submit, gbc);
-	     gbc.gridx = 1;
+	     gbc.gridx = 0;
 	     gbc.gridy = 6;
+	     panel.add(back, gbc);
 	     
 	     gbc.insets.set(10, 5, 50, 5);
 	     content.add(panelAccountButton, gbc);
@@ -172,7 +174,12 @@ public class Registration extends JFrame implements ActionListener  {
 		
 		Object source=e.getSource();
 		
-		
+		if(source == this.back) {
+			Anmeldung anm = new Anmeldung("Anmeldung");
+			dispose();
+		}
+	
+     
 		
 		if(source == this.submit) {
 			if((password1.getText().equals("Please enter a password"))||

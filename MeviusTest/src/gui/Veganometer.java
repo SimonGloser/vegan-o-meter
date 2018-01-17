@@ -36,19 +36,19 @@ public class Veganometer extends JFrame implements ActionListener {
 		JButton cowert;
 		JButton liquidNeeds;
 		JButton trainingPulse;
-		
+		JButton back;
 		JPanel panelAccountButton;
 		JPanel panel;
 		
 		public Veganometer(String s) {
 			super(s);
 		// for the Labels
-		bmi = new JButton("BMI calculator");
+		bmi = new JButton("bmi");
 		grundumsatz = new JButton("basal metabolism");
 		cowert = new JButton("Co2 calculator");
 		trainingPulse = new JButton("Training pulse calculator");
 		liquidNeeds = new JButton("liquid needs calculator");
-		
+		back = new JButton("back");
 		
 		// Step 3: generate containers for the components
 		 panel = new JPanel();
@@ -84,6 +84,9 @@ public class Veganometer extends JFrame implements ActionListener {
 	     gbc.gridx = 2;
 	     gbc.gridy = 0;
 	     panel.add(trainingPulse, gbc);
+	     gbc.gridx = 2;
+	     gbc.gridy = 1;
+	     panel.add(back, gbc);
 	     
 	     gbc.insets.set(10, 5, 50, 5);
 	    
@@ -96,7 +99,7 @@ public class Veganometer extends JFrame implements ActionListener {
 	     grundumsatz.addActionListener(this);
 	     liquidNeeds.addActionListener(this);
 	     trainingPulse.addActionListener(this);
-		
+	     back.addActionListener(this);
 		 // Step 7: display main window
 	     
 	     pack();
@@ -110,7 +113,10 @@ public class Veganometer extends JFrame implements ActionListener {
 			
 			Object source=e.getSource();
 			
-		
+			if(source == this.back) {
+				Anmeldung anm = new Anmeldung("Anmeldung");
+				dispose();
+			}
 			
 			if(source == this.bmi) {
 				Bmi bmi = new Bmi("BMI");
