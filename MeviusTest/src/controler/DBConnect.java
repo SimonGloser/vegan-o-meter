@@ -19,8 +19,7 @@ public class DBConnect {
 		
 		}
 	
-	//insert into person (name, surname, email, iban, password)
-	//values ("Beirekik", "Armin", "ssdds", "DE23224","sdsdsds");
+	
 	
 	public void newCustomer(String name, String surname, String email, String iban, String password) {
 		try {
@@ -75,6 +74,27 @@ public class DBConnect {
 		return gewicht;
 		
 	 }
+	 
+	 public String getPassword(String email) {
+		 
+		 String password = null;
+		 try {
+			 String query = "select password from person where email =\""+email + "\";";
+			 
+			 rs = st.executeQuery(query);
+			 while(rs.next()) {
+			 
+				  password = rs.getString("password");
+				 
+				 return password;
+			 } 
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+			return password;
+		}
+	 
+	 
 		
 
 }

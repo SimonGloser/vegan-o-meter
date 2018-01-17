@@ -19,8 +19,22 @@ public class Main implements Calculator {
 		
 	}
 	
-	public static void controlerNewCustomer(String name, String surname, String email, String iban, String password) {
+	public static void controlerNewCustomer(String name, String surname,
+			String email, String iban, String password) {
 		connect.newCustomer(name, surname, email, iban, password);
+	}
+	public static boolean controlerCheckCustomer(String email, String passwordGUI) {
+		
+		String passwordData = connect.getPassword(email);
+		if(passwordData.equals(passwordGUI)) {
+			return true;
+			//System.out.println("Nutzer bestätigt");
+			
+		}
+		else {
+		System.out.println("Nutzer nicht im System");
+		return false;
+		}
 	}
 
 }

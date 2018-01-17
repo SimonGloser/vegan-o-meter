@@ -15,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -54,7 +55,7 @@ public class Anmeldung extends JFrame implements ActionListener {
 	
 	emailLabel = new JLabel("Email: ", JLabel.RIGHT);
 	
-	emailField = new JTextField(20);
+	emailField = new JTextField("Please enter your email",20);
 	passwordLabel = new JLabel("Password: ", JLabel.RIGHT);
 	password = new JPasswordField(10);
 	
@@ -132,8 +133,14 @@ public class Anmeldung extends JFrame implements ActionListener {
 			dispose();
 		}
 		if(source == this.submit) {
+			if(true == controler.Main.controlerCheckCustomer(emailField.getText(),
+					String.valueOf(password.getPassword()))){
 			Veganometer neuesFenster1 = new Veganometer("Veganometer");
 			dispose();
+			}else {
+				JOptionPane.showMessageDialog(null, "Sorry, wrong password or email",
+                        "Dear User", JOptionPane.PLAIN_MESSAGE);
+			}
 		}
 	}
 
