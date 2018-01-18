@@ -139,7 +139,7 @@ public class Veganometer extends JFrame implements ActionListener {
 			}
 			
 			if(source == this.grundumsatz) {
-				Basalmetabolism basal = new Basalmetabolism("liquid needs");
+				Basalmetabolism basal = new Basalmetabolism("basal metabolism");
 				dispose();
 			}
 			

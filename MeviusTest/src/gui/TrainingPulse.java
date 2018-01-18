@@ -33,6 +33,7 @@ public class TrainingPulse extends JFrame implements ActionListener {
 	//Stepp 1 generate komponents
 	
     JButton back;
+    JButton save;
     JPanel panelAccountButton;
     JPanel panel;
     JTextField ageField;
@@ -53,8 +54,8 @@ public class TrainingPulse extends JFrame implements ActionListener {
 		ageField = new JTextField(10);
 		pulseField = new JTextField(10);
 		
-		
-		submit = new JButton("submit");
+		save = new JButton("save");
+		submit = new JButton("calculate");
 		 submit.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	                calculate();
@@ -90,7 +91,7 @@ public class TrainingPulse extends JFrame implements ActionListener {
 	    
 	    
 	    gbc.gridx = 0;
-	    gbc.gridy = 1;
+	    gbc.gridy = 3;
 	    
 	    panel.add(back,gbc);
 	    
@@ -112,7 +113,10 @@ public class TrainingPulse extends JFrame implements ActionListener {
 	    
 	    panel.add(pulseField,gbc);
 	     
+	    gbc.gridx = 1;
+	    gbc.gridy = 3;
 	    
+	    panel.add(save,gbc);
 	     
 	    gbc.insets.set(10, 5, 50, 5);
 		    

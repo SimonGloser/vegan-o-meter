@@ -36,6 +36,7 @@ public class Bmi extends JFrame implements ActionListener {
 	//Stepp 1 generate komponents
 	
     JButton back;
+    JButton save;
     JPanel panelAccountButton;
     JPanel panel;
     JLabel weightLabel;
@@ -60,7 +61,9 @@ public class Bmi extends JFrame implements ActionListener {
 		bmiLabel = new JLabel("Your BMI: ", JLabel.RIGHT);
 		heightLabel = new JLabel("Your height in cm: ", JLabel.RIGHT);
 		weightLabel = new JLabel("Your weight in kg: ", JLabel.RIGHT);
-		submit = new JButton("submit");
+		save = new JButton("save");
+		
+		submit = new JButton("calculate");
 		 submit.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	                calculate();
@@ -109,7 +112,7 @@ public class Bmi extends JFrame implements ActionListener {
 	    
 	    
 	    gbc.gridx = 0;
-	    gbc.gridy = 2;
+	    gbc.gridy = 5;
 	    
 	    panel.add(back,gbc);
 	    
@@ -135,6 +138,11 @@ public class Bmi extends JFrame implements ActionListener {
 	    gbc.gridy = 4;
 	    
 	    panel.add(bmiField,gbc);
+	    
+	    gbc.gridx = 1;
+	    gbc.gridy = 5;
+	    
+	    panel.add(save,gbc);
 	   
 	    gbc.insets.set(10, 5, 50, 5);
 		    

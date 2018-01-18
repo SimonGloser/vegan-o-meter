@@ -38,6 +38,7 @@ public class LiquidNeeds extends JFrame implements ActionListener {
     JLabel weightLabel;
     JLabel liqLabel;
     JButton submit;
+    JButton save;
 	JTextField weightField;
 	JTextField liqField;
 	
@@ -52,8 +53,8 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 		weightField = new JTextField(10);
 		liqField = new JTextField(10);
 		
-		
-		submit = new JButton("submit");
+		save = new JButton("save");
+		submit = new JButton("calculate");
 		 submit.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	                calculate();
@@ -90,7 +91,7 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 	    
 	    
 	    gbc.gridx = 0;
-	    gbc.gridy = 1;
+	    gbc.gridy = 3;
 	    
 	    panel.add(back,gbc);
 	    
@@ -111,6 +112,11 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 	    gbc.gridy = 2;
 	    
 	    panel.add(liqField,gbc);
+	    
+	    gbc.gridx = 1;
+	    gbc.gridy = 3;
+	    
+	    panel.add(save,gbc);
 	     
 	    gbc.insets.set(10, 5, 50, 5);
 		    
