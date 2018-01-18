@@ -19,10 +19,10 @@ public interface Calculator {
 	/**
 	 * @brief This method calculates the basal metabolic rate.
 	 *  There are two seperate formula for male and female.
-	 * @param gender 
-	 * @param mass
-	 * @param height
-	 * @param age
+	 * @param gender Gender of the user
+	 * @param mass Mass of the user	
+	 * @param height Height of the user
+	 * @param age Age of the user
 	 * @return The formula calculates a float value, but we change the result to an int value.
 	 */
 	public static int getGrundumsatz(boolean gender,float mass, int height, int age ) {
@@ -42,9 +42,9 @@ public interface Calculator {
 	}
 	/**
 	 * @brief This method calculates the BMI.
-	 * @param mass
-	 * @param height
-	 * @return
+	 * @param mass Mass of the user in kg.
+	 * @param height Height of the user in cm.
+	 * @return Returns the BMI of the user.
 	 */
 	public static float getBMI(float mass, int height) {
 		

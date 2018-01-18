@@ -7,6 +7,7 @@ import gui.*;
 public class Main implements Calculator {
 	// DBConnect verbindet sich mit der Datenbank und hat die Anfragebefehle
 	private static final DBConnect connect = new DBConnect();
+	private static User user = new User();
 	public static void main(String[] args) {
 		
 		
@@ -27,6 +28,7 @@ public class Main implements Calculator {
 		
 		String passwordData = connect.getPassword(email);
 		if(passwordData.equals(passwordGUI)) {
+			user.setId(connect.getUserID(email));
 			return true;
 			//System.out.println("Nutzer bestätigt");
 			
@@ -35,6 +37,15 @@ public class Main implements Calculator {
 		System.out.println("Nutzer nicht im System");
 		return false;
 		}
+	}
+	
+	public static void controlerSaveBMI(int value) {
+		//System.out.println("BMI = " + value + "id = " + user.getId());
+		connect.addBMIValue(value, user.getId());
+		
+	}
+	public static void controlerSavePulse(int value) {
+		connect.addPulseValue(value, user.getId());
 	}
 
 }

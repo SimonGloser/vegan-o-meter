@@ -1,6 +1,12 @@
 package controler;
 import java.sql.*;
-
+/**
+ * 
+ * @author simon gloser
+ * @breif This class connects the application white
+ *  the Database and is in charge for updates and queries
+ *
+ */
 public class DBConnect {
 	
 	private Connection con;
@@ -94,7 +100,72 @@ public class DBConnect {
 			return password;
 		}
 	 
-	 
+	 public void addBMIValue(int value, int id) {
+		 try {
+			 String query = "insert into bmi (id_person,bmi) values (" + id+ "," + value +");";
+			 st.executeUpdate(query);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	 }
+	 public void addPulseValue(int value, int id) {
+		 try {
+			 String query = "insert into pulse (id_person,pulse) values (" + id+ "," + value +");";
+			 st.executeUpdate(query);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	 }
+	 /**
+	  * 
+	  * @param id Needs the ID of the user
+	  * 
+	  */
+	 public void getAllBMI(int id) {
+		 try {
+			 	String query = "select bmi from bmi where id_person = " + id + ";";
+			 
+			 rs = st.executeQuery(query);
+			 while(rs.next()) {
+				 System.out.println(rs.getInt("bmi"));
+			 }
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	 }
+	 /**
+	  * @author Simon Gloser
+	  * @param email
+	  * @return Returns the id from the user
+	  * @brief The Main class need the id form user who had logged in
+	  */
+	 public int getUserID(String email) {
+		 int i = 0;
 		
+		 
+		 try {
+			 String query = "select id from person where email =\""+email + "\";";
+			 rs = st.executeQuery(query);
+			 while(rs.next()) {
+				 i = rs.getInt("id");
+			 return i;
+			 }
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		 return i;
+	 }
+	/* Befehl zum Fremdschlüssel erstellen bitte nicht löschen Simon
+	 * Wichtig die Felder id_person dürfen nicht null sein und muss unsigned sein
+	 alter table bmi
+	 add CONSTRAINT fk_bmi 
+	 FOREIGN KEY (id_person) REFERENCES person(id)
+	 ON DELETE RESTRICT
+	 ON UPDATE CASCADE;
+	*/	
 
 }

@@ -1,6 +1,6 @@
 package gui;
 
-
+import controler.*;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -26,7 +26,9 @@ import model.Calculator;
  * 
  * 
  * @author Philipp
- *
+ * @date 12.12.2017
+ * @brief This method calculates the BMI of the user. The user has also the
+ *  possibility to save its values in the database
  */
 public class Bmi extends JFrame implements ActionListener {
 	
@@ -89,6 +91,7 @@ public class Bmi extends JFrame implements ActionListener {
 	     
 	    panelAccountButton.setLayout(new BorderLayout());	 
 	    back.addActionListener(this);
+	    save.addActionListener(this);
 	     
 	    // Step 5: add the components to the containers and put the containers
 	    // into the main window
@@ -165,6 +168,11 @@ public class Bmi extends JFrame implements ActionListener {
 		
 		Object source=e.getSource();
 		
+		if(source == this.save) {
+			float val = Float.parseFloat(bmiField.getText().replace(',', '.'));
+			
+			controler.Main.controlerSaveBMI((int)val);
+		}
 	
 		
 		if(source == this.back) {

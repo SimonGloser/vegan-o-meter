@@ -1,6 +1,6 @@
 package gui;
 
-
+import controler.*;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -77,6 +77,7 @@ public class TrainingPulse extends JFrame implements ActionListener {
 	     
 	    panelAccountButton.setLayout(new BorderLayout());	 
 	    back.addActionListener(this);
+	    save.addActionListener(this);
 	     
 	    // Step 5: add the components to the containers and put the containers
 	    // into the main window
@@ -139,7 +140,10 @@ public class TrainingPulse extends JFrame implements ActionListener {
 		
 		Object source=e.getSource();
 		
-	
+		if(source == this.save) {
+			float value = Float.parseFloat(pulseField.getText().replace(',', '.'));
+			controler.Main.controlerSavePulse((int)value);
+		}
 		
 		if(source == this.back) {
 			Veganometer veg = new Veganometer("Veganometer");
