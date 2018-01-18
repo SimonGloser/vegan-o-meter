@@ -202,22 +202,22 @@ public class CoValue extends JFrame implements ActionListener {
 	    panel.add(calculate, gbc);
 	    
 	    gbc.gridx = 0;
-	    gbc.gridy = 6;
+	    gbc.gridy = 7;
 	     
 	    panel.add(coLabel, gbc);
 	    
 	    gbc.gridx = 1;
-	    gbc.gridy = 6;
+	    gbc.gridy = 7;
 	     
 	    panel.add(coField, gbc);
 	    
 	    gbc.gridx = 0;
-	    gbc.gridy = 7;
+	    gbc.gridy = 8;
 	     
 	    panel.add(back, gbc);
 	    
 	    gbc.gridx = 1;
-	    gbc.gridy = 7;
+	    gbc.gridy = 8;
 	     
 	    panel.add(save, gbc);
 	    
