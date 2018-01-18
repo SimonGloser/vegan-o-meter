@@ -48,6 +48,7 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 		JLabel basalLabel;
 		JTextField basalField;
 		
+		
 	
 	
 	public Basalmetabolism(String s) {
