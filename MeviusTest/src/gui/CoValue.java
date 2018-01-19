@@ -1,6 +1,6 @@
 package gui;
 
-
+import controler.*;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -246,7 +246,8 @@ public class CoValue extends JFrame implements ActionListener {
 		Object source=e.getSource();
 		
 		if(source == this.save) {
-			
+			// hier den aufruf an den controler einsetzen
+			// controler.Main.saveCoValue(int "Wert vom TExtfield")
 		}
 		
 		if(source == this.back) {

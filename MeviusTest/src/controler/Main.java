@@ -59,6 +59,11 @@ public class Main implements Calculator {
 	public static void controlerSaveCO(int value) {
 		connect.addCOValue(value, user.getId());
 	}
+	
+	public static void controlerSaveMetabolism(int value) {
+		System.out.println("controler calls DB");
+		connect.addMetabolismValue(value, user.getId());
+	}
 
 }
 

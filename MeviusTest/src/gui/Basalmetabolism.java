@@ -191,7 +191,7 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 		
 		// Step 6: Event Handling
         addWindowListener(new WindowClosingAdapter());
-    
+        save.addActionListener(this);
 	
         // Step 7: display main window
     
@@ -206,7 +206,10 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 		
 		Object source=e.getSource();
 		
-	
+		if(source == this.save) {
+			float value = Float.parseFloat(basalField.getText().replace(',', '.'));
+			controler.Main.controlerSaveMetabolism((int)value);
+		}
 		
 		if(source == this.back) {
 			Veganometer veg = new Veganometer("Veganometer");
