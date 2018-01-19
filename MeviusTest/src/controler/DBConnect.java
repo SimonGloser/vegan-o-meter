@@ -138,6 +138,16 @@ public class DBConnect {
 		}
 	 }
 	 
+	 public void addLiquidNeedsValue(int value, int id) {
+		 try {
+			 String query = "insert into liquid (id_person, liquid_needs) values (" + id+ "," + value +");";
+			 st.executeUpdate(query);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	 }
+	 
 	 /**
 	  * 
 	  * @param id Needs the ID of the user

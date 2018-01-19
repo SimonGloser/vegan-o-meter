@@ -1,6 +1,6 @@
 package gui;
 
-
+import controler.*;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -124,6 +124,7 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 		
 		// Step 6: Event Handling
         addWindowListener(new WindowClosingAdapter());
+        save.addActionListener(this);
     
 	
         // Step 7: display main window
@@ -139,7 +140,10 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 		
 		Object source=e.getSource();
 		
-	
+		if(source == this.save) {
+			float value = Float.parseFloat(liqField.getText().replace(',', '.'));
+			controler.Main.contolerSaveLiquid((int)value);
+		}
 		
 		if(source == this.back) {
 			Veganometer veg = new Veganometer("Veganometer");
