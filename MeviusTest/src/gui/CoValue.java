@@ -247,7 +247,7 @@ public class CoValue extends JFrame implements ActionListener {
 		
 		if(source == this.save) {
 			// hier den aufruf an den controler einsetzen
-			// controler.Main.saveCoValue(int "Wert vom TExtfield")
+			//controler.Main.controlerSaveCoValue(Integer.parseInt(basalField.getText()));
 		}
 		
 		if(source == this.back) {

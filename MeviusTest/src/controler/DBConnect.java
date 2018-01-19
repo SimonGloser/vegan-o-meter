@@ -121,7 +121,7 @@ public class DBConnect {
 	 public void addCOValue(int value, int id) {
 		 try {
 			// hier noch die richtigen felder eintegen
-			 //String query = "insert into coBilanz (id_person,pulse) values (" + id+ "," + value +");";
+			 //String query = "insert into coBilanz (id_person,co_value) values (" + id+ "," + value +");";
 			 //st.executeUpdate(query);
 		} catch (Exception e) {
 			System.out.println(e);

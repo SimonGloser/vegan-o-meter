@@ -67,6 +67,9 @@ public class Main implements Calculator {
 	public static void contolerSaveLiquid(int value) {
 		connect.addLiquidNeedsValue(value, user.getId());
 	}
+	public static void controlerSaveCoValue(int value) {
+		connect.addCOValue(value, user.getId());
+	}
 
 }
 
