@@ -230,7 +230,7 @@ public class CoValue extends JFrame implements ActionListener {
 		
 		// Step 6: Event Handling
         addWindowListener(new WindowClosingAdapter());
-    
+        save.addActionListener(this);
 	
         // Step 7: display main window
     
@@ -245,7 +245,9 @@ public class CoValue extends JFrame implements ActionListener {
 		
 		Object source=e.getSource();
 		
-	
+		if(source == this.save) {
+			
+		}
 		
 		if(source == this.back) {
 			Veganometer veg = new Veganometer("Veganometer");

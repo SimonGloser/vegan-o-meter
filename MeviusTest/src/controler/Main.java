@@ -3,7 +3,13 @@ import model.*;
 import gui.*;
 
 
-
+/**
+ * 
+ * @author simongloser
+ * @brief This class is the controler. It receives the data
+ *  form the GUI and send them to the model.
+ *
+ */
 public class Main implements Calculator {
 	// DBConnect verbindet sich mit der Datenbank und hat die Anfragebefehle
 	private static final DBConnect connect = new DBConnect();
@@ -38,6 +44,9 @@ public class Main implements Calculator {
 		return false;
 		}
 	}
+	// ab hier sind die Methoden, die DBconnect anweisen
+	//neue eintäge in der Datenbank anzulegen
+	
 	
 	public static void controlerSaveBMI(int value) {
 		//System.out.println("BMI = " + value + "id = " + user.getId());
@@ -46,6 +55,9 @@ public class Main implements Calculator {
 	}
 	public static void controlerSavePulse(int value) {
 		connect.addPulseValue(value, user.getId());
+	}
+	public static void controlerSaveCO(int value) {
+		connect.addCOValue(value, user.getId());
 	}
 
 }

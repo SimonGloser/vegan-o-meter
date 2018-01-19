@@ -118,6 +118,15 @@ public class DBConnect {
 			System.out.println(e);
 		}
 	 }
+	 public void addCOValue(int value, int id) {
+		 try {
+			 String query = "insert into coBilanz (id_person,pulse) values (" + id+ "," + value +");";
+			 st.executeUpdate(query);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	 }
+	 
 	 /**
 	  * 
 	  * @param id Needs the ID of the user
