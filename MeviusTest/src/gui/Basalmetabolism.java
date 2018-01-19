@@ -19,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 
 import model.Calculator;
 
@@ -34,8 +35,8 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 	    boolean gender =true;
 	    JButton back;
 	    JButton save;
-	    JButton male;
-	    JButton female;
+	    JToggleButton male;
+	    JToggleButton female;
 	    JPanel panelAccountButton;
 	    JPanel panel;
 	    JLabel weightLabel;
@@ -70,14 +71,14 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 	            }
 	        });
 		 
-		 male = new JButton("male");
+		 male = new JToggleButton("male", false);
 		 male.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	                gender=true;
 	            }
 	        }); 
 		 
-		 female = new JButton("female");
+		 female = new JToggleButton("female",false);
 		 female.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {
 	                gender=false;
