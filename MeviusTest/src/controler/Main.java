@@ -77,6 +77,18 @@ public class Main implements Calculator {
 	public static DefaultCategoryDataset controlerGetBMISet() {
 		return connect.getAllBMI(user.getId());
 	}
+	
+	public static DefaultCategoryDataset controlerGetLiquid() {
+		return connect.getAllLiquis(user.getId());
+	}
+	
+	public static DefaultCategoryDataset controlerGetMetabol() {
+		return connect.getAllMetabol(user.getId());
+	}
+	
+	public static DefaultCategoryDataset controlerGetPulse() {
+		return connect.getAllPulse(user.getId());
+	}
 
 }
 

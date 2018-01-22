@@ -21,6 +21,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.JToggleButton;
 
+import org.jfree.ui.RefineryUtilities;
+
 import model.Calculator;
 
 /**
@@ -35,6 +37,7 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 	    boolean gender =true;
 	    JButton back;
 	    JButton save;
+	    JButton plot;
 	    JToggleButton male;
 	    JToggleButton female;
 	    JPanel panelAccountButton;
@@ -54,6 +57,8 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 	
 	public Basalmetabolism(String s) {
 		super(s);
+		
+		plot = new JButton("Plot");
 		
 		// for the Labels
 		back = new JButton("back");
@@ -184,7 +189,10 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 	    
 	    panel.add(save,gbc);
 	     
-	   
+	    gbc.gridx = 0;
+	    gbc.gridy = 7;
+	    
+	    panel.add(plot,gbc);
 	     
 	    gbc.insets.set(10, 10, 50, 10);
 		    
@@ -193,6 +201,7 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 		// Step 6: Event Handling
         addWindowListener(new WindowClosingAdapter());
         save.addActionListener(this);
+        plot.addActionListener(this);
 	
         // Step 7: display main window
     
@@ -215,6 +224,15 @@ public class Basalmetabolism extends JFrame implements ActionListener {
 		if(source == this.back) {
 			Veganometer veg = new Veganometer("Veganometer");
 			dispose();
+		}
+		if(source == this.plot) {
+			LineChart_AWT chart = new LineChart_AWT(
+			         "Basal Metabolism" ,//Titel im Frame
+			         "Your personal metabolism chart"); //Titel über der Grafik
+
+			      chart.pack( );
+			      RefineryUtilities.centerFrameOnScreen( chart );
+			      chart.setVisible( true );
 		}
 	
      }
