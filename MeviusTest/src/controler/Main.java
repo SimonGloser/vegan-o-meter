@@ -1,5 +1,8 @@
 package controler;
 import model.*;
+
+import org.jfree.data.category.DefaultCategoryDataset;
+
 import gui.*;
 
 
@@ -69,6 +72,10 @@ public class Main implements Calculator {
 	}
 	public static void controlerSaveCoValue(int value) {
 		connect.addCOValue(value, user.getId());
+	}
+	
+	public static DefaultCategoryDataset controlerGetBMISet() {
+		return connect.getAllBMI(user.getId());
 	}
 
 }

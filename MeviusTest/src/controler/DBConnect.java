@@ -1,5 +1,7 @@
 package controler;
 import java.sql.*;
+
+import org.jfree.data.category.DefaultCategoryDataset;
 /**
  * 
  * @author simon gloser
@@ -102,7 +104,8 @@ public class DBConnect {
 	 
 	 public void addBMIValue(int value, int id) {
 		 try {
-			 String query = "insert into bmi (id_person,bmi) values (" + id+ "," + value +");";
+			 String query = "insert into bmi (id_person,bmi, date) values (" + id+ "," + value + ",curdate());";
+			 System.out.println(query);
 			 st.executeUpdate(query);
 			
 		} catch (Exception e) {
@@ -111,7 +114,7 @@ public class DBConnect {
 	 }
 	 public void addPulseValue(int value, int id) {
 		 try {
-			 String query = "insert into pulse (id_person,pulse) values (" + id+ "," + value +");";
+			 String query = "insert into pulse (id_person,pulse, date) values (" + id+ "," + value +",curdate());";
 			 st.executeUpdate(query);
 			
 		} catch (Exception e) {
@@ -130,7 +133,7 @@ public class DBConnect {
 	 
 	 public void addMetabolismValue(int value, int id) {
 		 try {
-			 String query = "insert into metabol (id_person, metabol) values (" + id+ "," + value +");";
+			 String query = "insert into metabol (id_person, metabol, date) values (" + id+ "," + value +",curdate());";
 			 st.executeUpdate(query);
 			
 		} catch (Exception e) {
@@ -140,7 +143,7 @@ public class DBConnect {
 	 
 	 public void addLiquidNeedsValue(int value, int id) {
 		 try {
-			 String query = "insert into liquid (id_person, liquid_needs) values (" + id+ "," + value +");";
+			 String query = "insert into liquid (id_person, liquid_needs, date) values (" + id+ "," + value +",curdate());";
 			 st.executeUpdate(query);
 			
 		} catch (Exception e) {
@@ -153,19 +156,35 @@ public class DBConnect {
 	  * @param id Needs the ID of the user
 	  * 
 	  */
-	 public void getAllBMI(int id) {
+	 public DefaultCategoryDataset getAllBMI(int id) {
+		 DefaultCategoryDataset dataset = new DefaultCategoryDataset( );
 		 try {
-			 	String query = "select bmi from bmi where id_person = " + id + ";";
+			 	String query = "select bmi, date from bmi where id_person = " + id + ";";
 			 
 			 rs = st.executeQuery(query);
+			 
 			 while(rs.next()) {
-				 System.out.println(rs.getInt("bmi"));
+				 
+				 double val = rs.getDouble("bmi");
+				 String date = rs.getString("date");
+				 
+				 
+				      dataset.addValue( val , "BMI" , date );
+				        
+				 			     
+				   }
+		      return dataset;
+
 			 }
 			
-		} catch (Exception e) {
+		 catch (Exception e) {
 			System.out.println(e);
+			
 		}
-	 }
+		return dataset;
+}
+		
+	 
 	 /**
 	  * @author Simon Gloser
 	  * @param email

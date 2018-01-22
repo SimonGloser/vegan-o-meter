@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import org.jfree.ui.RefineryUtilities;
+
 import model.Calculator;
 
 /**
@@ -39,6 +41,7 @@ public class Bmi extends JFrame implements ActionListener {
 	
     JButton back;
     JButton save;
+    JButton plot;
     JPanel panelAccountButton;
     JPanel panel;
     JLabel weightLabel;
@@ -60,6 +63,7 @@ public class Bmi extends JFrame implements ActionListener {
 		// for the Labels
 		back = new JButton("back");
 		def = new JLabel("");
+		plot = new JButton("Plot");
 		bmiLabel = new JLabel("Your BMI: ", JLabel.RIGHT);
 		heightLabel = new JLabel("Your height in cm: ", JLabel.RIGHT);
 		weightLabel = new JLabel("Your weight in kg: ", JLabel.RIGHT);
@@ -146,6 +150,11 @@ public class Bmi extends JFrame implements ActionListener {
 	    gbc.gridy = 5;
 	    
 	    panel.add(save,gbc);
+	    
+	    gbc.gridx = 1;
+	    gbc.gridy = 6;
+	    
+	    panel.add(plot,gbc);
 	   
 	    gbc.insets.set(10, 5, 50, 5);
 		    
@@ -153,6 +162,7 @@ public class Bmi extends JFrame implements ActionListener {
 		
 		// Step 6: Event Handling
         addWindowListener(new WindowClosingAdapter());
+        plot.addActionListener(this);
     
 	
         // Step 7: display main window
@@ -172,15 +182,30 @@ public class Bmi extends JFrame implements ActionListener {
 			float val = Float.parseFloat(bmiField.getText().replace(',', '.'));
 			
 			controler.Main.controlerSaveBMI((int)val);
+			 
+			   }
+		if(source == this.plot) {
+			LineChart_AWT chart = new LineChart_AWT(
+			         "BMI" ,//Titel im Frame
+			         "Your personal BMI chart"); //Titel über der Grafik
+
+			      chart.pack( );
+			      RefineryUtilities.centerFrameOnScreen( chart );
+			      chart.setVisible( true );
+			
 		}
+		
+
+
 	
 		
 		if(source == this.back) {
 			Veganometer veg = new Veganometer("Veganometer");
 			dispose();
 		}
+		}
 	
-     }
+     
 	
     
     private void calculate() {
@@ -209,6 +234,7 @@ public class Bmi extends JFrame implements ActionListener {
 
 	
 }
+
 
 
 
