@@ -27,7 +27,10 @@ import model.Calculator;
 /**
  * 
  * 
- * @author Philipp
+ * @author Philipp Manasek
+ * @date 2017-12-28
+ * @brief This frame calculates the trainings pulse of the user. The user has also the
+ *  possibility to save its values in the database
  *
  */
 public class TrainingPulse extends JFrame implements ActionListener {

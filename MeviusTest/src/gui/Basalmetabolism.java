@@ -28,7 +28,9 @@ import model.Calculator;
 /**
  * 
  * 
- * @author Philipp
+ * @author Philipp Manasek
+ * @date 2017-11-23
+ * @brief In this Frame the user can calcuate its basal metabolism. The user has also the possibility.
  *
  */
 public class Basalmetabolism extends JFrame implements ActionListener {

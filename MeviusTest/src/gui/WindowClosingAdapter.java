@@ -2,7 +2,13 @@ package gui;
 
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
-
+/**
+ * 
+ * @author Armin Beirektasevik
+ * @date 2017-11-21
+ * @brief This class contains the window closing event from the exit button.
+ *
+ */
 public class WindowClosingAdapter implements WindowListener {
 
 	@Override

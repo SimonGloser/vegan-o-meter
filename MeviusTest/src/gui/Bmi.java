@@ -27,9 +27,9 @@ import model.Calculator;
 /**
  * 
  * 
- * @author Philipp
+ * @author Philipp Manasek
  * @date 12.12.2017
- * @brief This method calculates the BMI of the user. The user has also the
+ * @brief This frame calculates the BMI of the user. The user has also the
  *  possibility to save its values in the database
  */
 public class Bmi extends JFrame implements ActionListener {

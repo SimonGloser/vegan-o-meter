@@ -19,7 +19,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
+/**
+ * 
+ * @author Chris N`Cho
+ * @date 2017-11-21
+ * @brief In this frame the user has the ability to log in or register
+ *
+ */
 public class Anmeldung extends JFrame implements ActionListener {
 	
 	//Stepp 1 generate komponents

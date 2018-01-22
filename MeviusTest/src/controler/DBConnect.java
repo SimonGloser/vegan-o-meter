@@ -7,6 +7,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 /**
  * 
  * @author simon gloser
+ * @date 2017-11-22
  * @breif This class connects the application white the Database and is in
  *        charge for updates and queries
  *
@@ -30,7 +31,14 @@ public class DBConnect {
 		}
 
 	}
-
+/**
+ * @breif Add a new dataset in table person.
+ * @param name Name of the user.
+ * @param surname Surname of the user.
+ * @param email Email of the user.
+ * @param iban IBAN of the user
+ * @param password Personal password of the user.
+ */
 	public void newCustomer(String name, String surname, String email, String iban, String password) {
 		try {
 			String query = "insert into person (name, surname, email, iban, password)values(\"" + name + "\",\""
@@ -42,7 +50,7 @@ public class DBConnect {
 			System.out.println(e);
 		}
 	}
-
+//war nur zum testen am anfang da.
 	public void getData() {
 		try {
 			String query = "select * from person";
@@ -59,7 +67,7 @@ public class DBConnect {
 			System.out.println(ex);
 		}
 	}
-
+//war nur zum testen am Anfang da
 	public int getWeight(int id) {
 		int gewicht = 0;
 		try {
@@ -80,7 +88,11 @@ public class DBConnect {
 		return gewicht;
 
 	}
-
+/**
+ * @breif Get the users password from the database.
+ * @param email Get the users email.
+ * @return Returns the user`s password.
+ */
 	public String getPassword(String email) {
 
 		String password = null;
@@ -99,7 +111,11 @@ public class DBConnect {
 		}
 		return password;
 	}
-
+	/**
+	 * @breif Add a new dataset in the table bmi.
+	 * @param value The user`s new BMI value.
+	 * @param id Needs the user`s id.
+	 */
 	public void addBMIValue(int value, int id) {
 		try {
 			String query = "insert into bmi (id_person,bmi, date) values (" + id + "," + value + ",curdate());";
@@ -110,7 +126,11 @@ public class DBConnect {
 			System.out.println(e);
 		}
 	}
-
+/**
+ * @brief Add a new dataset to the table pulse.
+ * @param value Need the user`s new pulse value.
+ * @param id Need the user`s id.
+ */
 	public void addPulseValue(int value, int id) {
 		try {
 			String query = "insert into pulse (id_person,pulse, date) values (" + id + "," + value + ",curdate());";
@@ -120,7 +140,11 @@ public class DBConnect {
 			System.out.println(e);
 		}
 	}
-
+/**
+ * @brief Add a new dataset to the table coBilanz.
+ * @param value Needs the user`s new Co2 Value.
+ * @param id Needs the user`s id.
+ */
 	public void addCOValue(double value, int id) {
 		try {
 			// hier noch die richtigen felder eintegen
@@ -131,7 +155,11 @@ public class DBConnect {
 			System.out.println(e);
 		}
 	}
-
+/**
+ * @brief Add an new dataset to the table metabol.
+ * @param value Need the users new `basal metabol value.
+ * @param id Need the user`s id.
+ */
 	public void addMetabolismValue(int value, int id) {
 		try {
 			String query = "insert into metabol (id_person, metabol, date) values (" + id + "," + value
@@ -142,7 +170,11 @@ public class DBConnect {
 			System.out.println(e);
 		}
 	}
-
+/**
+ * @brief Add a new dataset to the table liquid.
+ * @param value Need the user`s new liquid needs value.
+ * @param id Need the user`s id.
+ */
 	public void addLiquidNeedsValue(int value, int id) {
 		try {
 			String query = "insert into liquid (id_person, liquid_needs, date) values (" + id + "," + value
@@ -155,9 +187,8 @@ public class DBConnect {
 	}
 
 	/**
-	 * 
-	 * @param id
-	 *            Needs the ID of the user
+	 * @brief Returns a dataset with all BMI values for the plot
+	 * @param id  Needs the ID of the user
 	 * 
 	 */
 	public DefaultCategoryDataset getAllBMI(int id) {
@@ -183,7 +214,11 @@ public class DBConnect {
 		}
 		return dataset;
 	}
-	
+	/**
+	 * 
+	 * @param id Need the user`s id.
+	 * @return Returns a dataset with all pulse values.
+	 */
 	public DefaultCategoryDataset getAllPulse(int id) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		try {
@@ -207,7 +242,11 @@ public class DBConnect {
 		}
 		return dataset;
 	}
-	
+	/**
+	 * 
+	 * @param id Need the user`s id.
+	 * @return Returns a dataset with all metabol values.
+	 */
 	public DefaultCategoryDataset getAllMetabol(int id) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		try {
@@ -231,7 +270,11 @@ public class DBConnect {
 		}
 		return dataset;
 	}
-	
+	/**
+	 * 
+	 * @param id Need the user`s id.
+	 * @return Returns a dataset with all liquid needs values.
+	 */
 	public DefaultCategoryDataset getAllLiquis(int id) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		try {
@@ -255,7 +298,11 @@ public class DBConnect {
 		}
 		return dataset;
 	}
-	
+	/**
+	 * 
+	 * @param id Need the user`s id.
+	 * @return Return a dataset with all Co2 values.
+	 */
 	public DefaultCategoryDataset getCOVallues(int id) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		try {

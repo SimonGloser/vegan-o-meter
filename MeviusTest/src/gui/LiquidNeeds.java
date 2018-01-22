@@ -27,7 +27,10 @@ import model.Calculator;
 /**
  * 
  * 
- * @author Philipp
+ * @author Philipp Manasek
+ * @date 2017-11-28
+ * @breif This frame calculates the liquid needs of the user. The user has also the
+ *  possibility to save its values in the database
  *
  */
 public class LiquidNeeds extends JFrame implements ActionListener {

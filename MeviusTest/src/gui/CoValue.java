@@ -28,7 +28,10 @@ import javax.swing.JTextField;
 /**
  * 
  * 
- * @author Philipp
+ * @author Philipp Manasek
+ * @date 13.12.2017
+ * @brief This frame calculates the carbon footprint of the user. The user has also the
+ *  possibility to save its values in the database
  *
  */
 public class CoValue extends JFrame implements ActionListener {

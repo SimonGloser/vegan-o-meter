@@ -23,6 +23,8 @@ import javax.swing.JTextField;
 /**
  * 
  * @author Philipp
+ * @date 2017-11-19
+ * @brief In this frame the user can choose what he want to calculate.
  *
  */
 public class Veganometer extends JFrame implements ActionListener {
