@@ -1,6 +1,8 @@
 package gui;
 
 import controler.*;
+import model.Calculator;
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -11,6 +13,9 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JToggleButton;
+
+import org.jfree.ui.RefineryUtilities;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -29,22 +34,29 @@ import javax.swing.JTextField;
 public class CoValue extends JFrame implements ActionListener {
 	
 	//Stepp 1 generate komponents
+	 float factorSport;      
+   
+     float factorComp;
+     float factorFreeze;
+     float factorShop;
 	
-    JButton back;
-    JButton save;
+	
+	JButton back;
+	JButton save;
+	JButton plot;
     JPanel panelAccountButton;
     JPanel panel;
-    JButton sport1;
-    JButton sport2;
-    JButton comp1;
-    JButton comp2;
-    JButton comp3;
-    JButton comp4;
-    JButton freeze1;
-    JButton freeze2;
-    JButton freeze3;
-    JButton shop1;
-    JButton shop2;
+    JToggleButton sport1;
+    JToggleButton sport2;
+    JToggleButton comp1;
+    JToggleButton comp2;
+    JToggleButton comp3;
+    JToggleButton comp4;
+    JToggleButton freeze1;
+    JToggleButton freeze2;
+    JToggleButton freeze3;
+    JToggleButton shop1;
+    JToggleButton shop2;
     JButton calculate;
     
     JLabel compLabel;
@@ -65,18 +77,98 @@ public class CoValue extends JFrame implements ActionListener {
 		// for the Labels
 		back = new JButton("back");
 		save = new JButton("save");
-		sport1 = new JButton("yes");
-		sport2 = new JButton("no");
-		comp1 = new JButton("lots of meat");
-		comp2 = new JButton("mixed diet");
-		comp3 = new JButton("meat reduced");
-		comp4 = new JButton("vegetarian");
-		freeze1 = new JButton("sometimes");
-		freeze2 = new JButton("1-3 times per week");
-		freeze3 = new JButton("daily");
-		shop1 = new JButton("supermarket food");
-		shop2 = new JButton("regional food");
+		plot = new JButton("plot");
+		
+		sport1 = new JToggleButton("yes",false);
+		sport1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorSport=1.1f;
+            }
+        }); 
+		
+		
+		sport2 = new JToggleButton("no",false);
+		sport2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorSport=1.0f;
+            }
+        }); 
+		
+		comp1 = new JToggleButton("lots of meat",false);
+		comp1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorComp=1.3f;
+            }
+        }); 
+		
+		
+		comp2 = new JToggleButton("mixed diet",false);
+		comp2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorComp=1.0f;
+            }
+        }); 
+		
+		comp3 = new JToggleButton("meat reduced",false);
+		comp3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorComp=0.8f;
+            }
+        }); 
+		
+		comp4 = new JToggleButton("vegetarian",false);
+		comp4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorComp=0.7f;
+            }
+        }); 
+		
+		
+		freeze1 = new JToggleButton("sometimes",false);
+		freeze1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorFreeze=1.0f;
+            }
+        }); 
+		
+		freeze2 = new JToggleButton("1-3 times per week",false);
+		freeze2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorFreeze=1.1f;
+            }
+        }); 
+		
+		
+		freeze3 = new JToggleButton("daily",false);
+		freeze3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorFreeze=1.2f;
+            }
+        }); 
+		
+		
+		
+		shop1 = new JToggleButton("supermarket food",false);
+		shop1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorShop=1.0f;
+            }
+        }); 
+		
+		shop2 = new JToggleButton("regional food",false);
+		shop2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                factorShop=0.9f;
+            }
+        }); 
+		
+		
 		calculate = new JButton("calculate");
+		 calculate.addActionListener(new ActionListener() {
+	            public void actionPerformed(ActionEvent e) {
+	                calculate();
+	            }
+		 });
 		
 		sportLabel = new JLabel("Do you do sports: ", JLabel.RIGHT);
 		freezeLabel = new JLabel("How often do you use frozen food: ", JLabel.RIGHT);
@@ -221,7 +313,10 @@ public class CoValue extends JFrame implements ActionListener {
 	     
 	    panel.add(save, gbc);
 	    
-	    
+	    gbc.gridx = 0;
+	    gbc.gridy = 9;
+	     
+	    panel.add(plot, gbc);
 	    
 	     
 	    gbc.insets.set(10, 5, 50, 5);
@@ -231,6 +326,7 @@ public class CoValue extends JFrame implements ActionListener {
 		// Step 6: Event Handling
         addWindowListener(new WindowClosingAdapter());
         save.addActionListener(this);
+        plot.addActionListener(this);
 	
         // Step 7: display main window
     
@@ -247,16 +343,45 @@ public class CoValue extends JFrame implements ActionListener {
 		
 		if(source == this.save) {
 			// hier den aufruf an den controler einsetzen
-			//controler.Main.controlerSaveCoValue(Integer.parseInt(basalField.getText()));
+			controler.Main.controlerSaveCO(Double.parseDouble(coField.getText()));
+			
 		}
 		
 		if(source == this.back) {
 			Veganometer veg = new Veganometer("Veganometer");
 			dispose();
 		}
+		if(source == this.plot) {
+			LineChart_AWT chart = new LineChart_AWT(
+			         "co2 FootPrint" ,//Titel im Frame
+			         "Your personal co2 - Footprint chart"); //Titel über der Grafik
+
+			      chart.pack( );
+			      RefineryUtilities.centerFrameOnScreen( chart );
+			      chart.setVisible( true );
+		}
 	
      }
-	
+ private void calculate() {
+        
+       
+        int basal;
+       
+        float coValue;
+
+        
+        basal = Integer.parseInt(basalField.getText());
+      
+
+      
+        
+        coValue = Calculator.getCoWert(basal,factorSport, factorComp, factorFreeze, factorShop);
+        
+
+        //Ausgabe
+        
+       coField.setText(Float.toString(coValue));
+        
+    }	
 	
 }
-

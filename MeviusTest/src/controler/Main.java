@@ -59,7 +59,7 @@ public class Main implements Calculator {
 	public static void controlerSavePulse(int value) {
 		connect.addPulseValue(value, user.getId());
 	}
-	public static void controlerSaveCO(int value) {
+	public static void controlerSaveCO(double value) {
 		connect.addCOValue(value, user.getId());
 	}
 	
@@ -88,6 +88,10 @@ public class Main implements Calculator {
 	
 	public static DefaultCategoryDataset controlerGetPulse() {
 		return connect.getAllPulse(user.getId());
+	}
+	
+	public static DefaultCategoryDataset controlerGetCo() {
+		return connect.getCOVallues(user.getId());
 	}
 
 }

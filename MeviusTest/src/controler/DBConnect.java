@@ -121,12 +121,12 @@ public class DBConnect {
 		}
 	}
 
-	public void addCOValue(int value, int id) {
+	public void addCOValue(double value, int id) {
 		try {
 			// hier noch die richtigen felder eintegen
-			// String query = "insert into coBilanz (id_person,co_value) values (" + id+ ","
-			// + value +");";
-			// st.executeUpdate(query);
+			 String query = "insert into coBilanz (id_person,co_value,date) values (" + id+ ","
+			 + value +",curdate());";
+			st.executeUpdate(query);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -245,6 +245,30 @@ public class DBConnect {
 				String date = rs.getString("date");
 
 				dataset.addValue(val, "Liquid Needs", date);
+
+			}
+			return dataset;
+		}
+
+		catch (Exception e) {
+			System.out.println(e);
+		}
+		return dataset;
+	}
+	
+	public DefaultCategoryDataset getCOVallues(int id) {
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		try {
+			String query = "select co_value, date from coBilanz where id_person = " + id + ";";
+
+			rs = st.executeQuery(query);
+
+			while (rs.next()) {
+
+				double val = rs.getDouble("co_value");
+				String date = rs.getString("date");
+
+				dataset.addValue(val, "Co2 Value", date);
 
 			}
 			return dataset;
