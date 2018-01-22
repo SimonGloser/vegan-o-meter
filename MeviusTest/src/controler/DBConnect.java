@@ -187,7 +187,7 @@ public class DBConnect {
 	public DefaultCategoryDataset getAllPulse(int id) {
 		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		try {
-			String query = "select pulse, date from bmi where id_person = " + id + ";";
+			String query = "select pulse, date from pulse where id_person = " + id + ";";
 
 			rs = st.executeQuery(query);
 
@@ -196,7 +196,7 @@ public class DBConnect {
 				double val = rs.getDouble("pulse");
 				String date = rs.getString("date");
 
-				dataset.addValue(val, "BMI", date);
+				dataset.addValue(val, "Pulse", date);
 
 			}
 			return dataset;

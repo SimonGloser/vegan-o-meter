@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import org.jfree.ui.RefineryUtilities;
+
 import model.Calculator;
 
 /**
@@ -34,6 +36,7 @@ public class TrainingPulse extends JFrame implements ActionListener {
 	
     JButton back;
     JButton save;
+    JButton plot;
     JPanel panelAccountButton;
     JPanel panel;
     JTextField ageField;
@@ -53,6 +56,7 @@ public class TrainingPulse extends JFrame implements ActionListener {
 		ageLabel = new JLabel("Your age: ", JLabel.RIGHT);
 		ageField = new JTextField(10);
 		pulseField = new JTextField(10);
+		plot = new JButton("Plot");
 		
 		save = new JButton("save");
 		submit = new JButton("calculate");
@@ -78,6 +82,7 @@ public class TrainingPulse extends JFrame implements ActionListener {
 	    panelAccountButton.setLayout(new BorderLayout());	 
 	    back.addActionListener(this);
 	    save.addActionListener(this);
+	  
 	     
 	    // Step 5: add the components to the containers and put the containers
 	    // into the main window
@@ -118,6 +123,11 @@ public class TrainingPulse extends JFrame implements ActionListener {
 	    gbc.gridy = 3;
 	    
 	    panel.add(save,gbc);
+	    
+	    gbc.gridx = 0;
+	    gbc.gridy = 4;
+	    
+	    panel.add(plot,gbc);
 	     
 	    gbc.insets.set(10, 5, 50, 5);
 		    
@@ -125,7 +135,7 @@ public class TrainingPulse extends JFrame implements ActionListener {
 		
 		// Step 6: Event Handling
         addWindowListener(new WindowClosingAdapter());
-    
+        plot.addActionListener(this);
 	
         // Step 7: display main window
     
@@ -148,6 +158,15 @@ public class TrainingPulse extends JFrame implements ActionListener {
 		if(source == this.back) {
 			Veganometer veg = new Veganometer("Veganometer");
 			dispose();
+		}
+		if(source == this.plot) {
+			LineChart_AWT chart = new LineChart_AWT(
+			         "Trainings Pulse" ,//Titel im Frame
+			         "Your personal pulse chart"); //Titel über der Grafik
+
+			      chart.pack( );
+			      RefineryUtilities.centerFrameOnScreen( chart );
+			      chart.setVisible( true );
 		}
 	
      }
