@@ -20,6 +20,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import org.jfree.ui.RefineryUtilities;
+
 import model.Calculator;
 
 /**
@@ -33,6 +35,7 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 	//Stepp 1 generate komponents
 	
     JButton back;
+    JButton plot;
     JPanel panelAccountButton;
     JPanel panel;
     JLabel weightLabel;
@@ -52,7 +55,7 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 		liqLabel = new JLabel("Your liquid needs in ml: ", JLabel.RIGHT);
 		weightField = new JTextField(10);
 		liqField = new JTextField(10);
-		
+		plot = new JButton("Plot");
 		save = new JButton("save");
 		submit = new JButton("calculate");
 		 submit.addActionListener(new ActionListener() {
@@ -77,6 +80,7 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 	     
 	    panelAccountButton.setLayout(new BorderLayout());	 
 	    back.addActionListener(this);
+	    
 	     
 	    // Step 5: add the components to the containers and put the containers
 	    // into the main window
@@ -117,6 +121,11 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 	    gbc.gridy = 3;
 	    
 	    panel.add(save,gbc);
+	    
+	    gbc.gridx = 0;
+	    gbc.gridy = 4;
+	    
+	    panel.add(plot,gbc);
 	     
 	    gbc.insets.set(10, 5, 50, 5);
 		    
@@ -125,6 +134,7 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 		// Step 6: Event Handling
         addWindowListener(new WindowClosingAdapter());
         save.addActionListener(this);
+        plot.addActionListener(this);
     
 	
         // Step 7: display main window
@@ -148,6 +158,15 @@ public class LiquidNeeds extends JFrame implements ActionListener {
 		if(source == this.back) {
 			Veganometer veg = new Veganometer("Veganometer");
 			dispose();
+		}
+		if(source == this.plot) {
+			LineChart_AWT chart = new LineChart_AWT(
+			         "Liquid Needs" ,//Titel im Frame
+			         "Your personal liquid needs chart"); //Titel über der Grafik
+
+			      chart.pack( );
+			      RefineryUtilities.centerFrameOnScreen( chart );
+			      chart.setVisible( true );
 		}
 	
      }
